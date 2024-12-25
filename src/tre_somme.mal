@@ -1,0 +1,24 @@
+.default goto fine
+.label inizio 0x0
+
+//somma di due registri su H e fine programma
+inizio H = 0; goto somma1
+//trovo H = 4 e lo scrivo in MDR
+somma1 H = H + 1;
+       H = H + 1;
+       H = H + 1;
+       H = H + 1;
+       MDR = H = H + 1;
+       MAR = SP; wr; 
+       SP = SP + 1;
+//H = 5 qui
+somma2 MDR = H = H + 1;
+       MAR = SP; wr;
+       SP = SP + 1; goto somma3
+// H = 6
+somma3 MDR = H = H + 1;
+       MAR = SP; wr;
+       TOS = MDR; goto fine
+// H = 7 = TOS
+fine goto fine
+       

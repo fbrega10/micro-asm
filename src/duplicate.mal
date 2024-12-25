@@ -1,0 +1,16 @@
+.label inizio 0x0
+.default goto fine
+
+inizio MAR = SP = SP + 1; rd; 
+       MAR = SP = SP + 1; rd
+       TOS = MDR;
+       H = MDR; goto sum
+
+sum    MAR = LV;
+       MDR = H + TOS; wr; goto reset
+
+reset SP = SP - 1;
+     SP = SP - 1; goto fine
+
+fine goto fine
+

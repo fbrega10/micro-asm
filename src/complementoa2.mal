@@ -1,0 +1,13 @@
+.label inizio 0x0
+.default goto fine
+
+//Supponendo di avere nel registro TOS 
+//un numero intero A rappresentato in complemento a due, 
+//scrivere un programma Mic1 che memorizzi nel registro OPC il valore -A. 
+
+
+
+inizio H = TOS; goto istr01
+istr01 OPC = -H; goto fine
+fine goto fine
+

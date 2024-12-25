@@ -1,0 +1,33 @@
+.constant
+    KAPPA 2
+.end-constant
+
+.main
+.var
+    sum
+.end-var
+addendo1:
+    LDC_W KAPPA
+    DUP
+    BIPUSH 0x30
+    IADD
+    OUT 
+
+somma:
+    BIPUSH 43
+    OUT
+    BIPUSH 31
+    DUP
+    BIPUSH 0x30
+    IADD
+    OUT
+    IADD
+    DUP
+    ISTORE sum
+    BIPUSH 0x30
+    IADD
+    OUT
+stop:
+    HALT
+.end-main
+

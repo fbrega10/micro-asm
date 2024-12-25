@@ -1,0 +1,28 @@
+.main
+.var
+    k
+    j
+.end-var
+
+    BIPUSH 4
+    ISTORE k
+    BIPUSH 5
+    ISTORE j
+    ILOAD k
+    ILOAD j
+    ISTORE k
+    ISTORE j
+
+viewk:
+    BIPUSH 0x30
+    DUP
+    ILOAD k
+    IADD
+    OUT
+    ILOAD j
+    IADD
+    OUT
+stop: 
+    HALT
+
+.end-main

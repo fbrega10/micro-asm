@@ -1,0 +1,23 @@
+// Dati due vettori v1, v2 della stessa lunghezza n, calcolare v3 = v1 + v2.
+// - SP contiene l'indirizzo di partenza di v1 es. 0x8000
+// - LV contiene l'indirizzo di partenza di v2 es. 0x8004
+// - CPP contiene l'indirizzo di partenza di v3 es. 0x8008
+// - TOS contiene n es. 4
+
+.label inizio0 0x0
+.default goto fine
+
+inizio0 SP = SP - 1;
+CPP = CPP - 1;
+LV = LV - 1; goto inizio
+
+inizio Z = TOS; if (Z) goto fine; else goto istr01
+
+istr01 TOS = TOS - 1; goto istr02
+istr02 MAR = SP = SP + 1; rd; goto istr03
+istr03 MAR = LV = LV + 1; rd; goto istr04
+istr04 H = MDR; goto istr05
+istr05 MDR = MDR + H; goto istr06
+istr06 MAR = CPP = CPP + 1; wr; goto istr01
+
+fine goto fine

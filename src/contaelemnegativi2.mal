@@ -1,0 +1,14 @@
+.label inizio 0x0
+.default goto fine
+
+inizio OPC = 0; goto istr01
+
+istr01 Z = TOS; if (Z) goto fine; else goto istr02
+istr02 MAR = SP; rd; goto istr03
+istr03 SP = SP + 1; goto istr04
+istr04 TOS = TOS - 1; goto istr05
+istr05 H = MDR; if (N) goto istr06; else goto istr01
+istr06 OPC = H + OPC; goto istr01
+
+fine goto fine
+

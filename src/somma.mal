@@ -1,0 +1,10 @@
+.default goto fine
+.label inizio 0x0
+
+//somma di due registri su H e fine programma
+inizio MAR = SP; rd;
+       MAR = SP; rd;
+       H = H + MDR;
+       H = H + MDR; goto fine
+fine goto fine
+       

@@ -1,0 +1,17 @@
+.constant
+    KAPPA 2
+.end-constant
+.main
+.var 
+    i
+.end-var
+    LDC_W KAPPA
+    BIPUSH 2
+    IADD
+    ISTORE i
+    ILOAD i
+    BIPUSH 0x30
+    IADD
+    OUT
+    HALT
+.end-main

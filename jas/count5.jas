@@ -1,0 +1,31 @@
+.main
+
+.var
+    sum
+    count
+.end-var
+
+    BIPUSH 0
+    DUP
+    ISTORE sum
+    ISTORE count
+
+ciclo:
+    IINC count 1
+    ILOAD count
+    ILOAD sum
+    IADD
+    ISTORE sum
+    ILOAD count
+    BIPUSH 3
+    IF_ICMPEQ continua
+    GOTO ciclo
+
+continua:
+    ILOAD sum
+    BIPUSH 0x30
+    IADD
+    OUT
+    HALT
+.end-main
+

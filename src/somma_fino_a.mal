@@ -1,0 +1,21 @@
+.default goto fine
+.label inizio 0x0
+
+
+//valore in OPC è il valore da sommare 
+// OPC è anche l'accumulatore
+//TOS = numero di volte da sommare
+
+inizio H = OPC;
+TOS = MDR; goto ciclo
+
+ciclo OPC = OPC + H;
+ciclo2 TOS = TOS - 1;
+ciclo3 N = TOS; if (N) goto quasifine; else goto ciclo
+
+quasifine SP = SP + 1;
+quasifin2 MDR = OPC; wr;
+quasifin3 nop; goto fine
+
+fine goto fine
+

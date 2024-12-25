@@ -1,0 +1,16 @@
+.default goto fine
+.label inizio 0x0
+
+//leggo da indirizzo di  H
+//MDR + OPC - MBR
+
+inizio MAR = H; rd;
+       MAR = LV;
+//somma OPC
+       H = MDR;
+       OPC = H + OPC;
+//sottrai MBR e scrivi in LV
+       H = MBRU;
+       MDR = H = OPC - H; wr; goto fine
+fine goto fine
+

@@ -1,0 +1,49 @@
+//Scrivere in IJVM un metodo ricorsivo che permetta la moltiplicazione tra interi positivi
+//in C il programma sarebbe:
+	
+//#include <stdio.h>
+
+//int mul(int i, int j) {
+//if (i > 0) {
+//return mul(i-1,j)+j;
+//}
+
+//return 0;
+//}
+
+.constant
+    OBJREF 0x40
+    OUTPUT 0x30
+.end-constant
+
+.main
+    LDC_W OBJREF
+    BIPUSH 3
+    DUP
+    INVOKEVIRTUAL multiply
+    LDC_W OUTPUT
+    IADD
+    OUT
+    HALT
+.end-main
+
+.method multiply(i, j)
+    BIPUSH 0
+    ILOAD i
+    ISUB
+    //-i 
+    IFLT mul
+    BIPUSH 0
+    GOTO exit
+
+mul: LDC_W OBJREF
+     ILOAD i
+     BIPUSH 1
+     ISUB
+     ILOAD j
+     INVOKEVIRTUAL multiply
+     ILOAD j
+     IADD
+
+exit: IRETURN
+.end-method

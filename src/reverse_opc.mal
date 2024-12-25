@@ -1,0 +1,7 @@
+.default goto fine
+.label inizio 0x0
+
+inizio H = TOS;
+       OPC = - H; goto fine
+fine goto fine
+

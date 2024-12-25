@@ -1,0 +1,18 @@
+.label inizio 0x0
+.default goto fine
+
+
+//Supponendo di avere nei registri TOS e SP memorizzati 
+//due numeri A e B rappresentati in complemento a due, 
+//scrivere un programma Mic1 che memorizzi nel 
+//registro OPC il valore 2(A - B). 
+
+inizio MAR = SP; rd; goto istr01
+istr01 nop; goto istr02
+istr02 H = MDR; goto istr03
+istr03 OPC = TOS - H; goto istr04
+istr04 H = OPC; goto istr05
+istr05 H = H + OPC; goto fine 
+
+fine goto fine
+

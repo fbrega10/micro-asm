@@ -1,0 +1,29 @@
+.label inizio 0x0
+.default goto fine
+
+//Scrivere un programma MAL che calcola il valore dell’espressione booleana (x and (not y)) or ((not(x) and y)
+//1. Il valore di x è memorizzato nella cella di memoria con indirizzo presente in SP
+//2. Il valore di y è memorizzato nella cella di memoria con indirizzo SP-1
+//3. Il risultato deve essere memorizzato nella cella di memoria con indirizzo SP+1
+
+//fetch x
+//TOS = X, OPC = Y
+
+inizio MAR = SP; rd; goto fetchy
+fetchy MAR = SP - 1; rd; goto istr01
+istr01 H = TOS = MDR; goto istr02
+istr02 OPC = MDR; goto istr03
+
+//not y
+
+istr03 H = NOT OPC; goto istr04
+
+//MBR = x and not y
+istr04 MDR = TOS AND H; goto istr05
+istr05 H = NOT TOS; goto istr06
+istr06 H = OPC AND H; goto istr07
+istr07 MDR = H OR MDR; goto istr08
+istr08 MAR = SP + 1; wr; goto fine
+
+fine goto fine
+

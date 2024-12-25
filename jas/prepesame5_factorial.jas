@@ -1,0 +1,87 @@
+//Scrivere in IJVM un metodo ricorsivo che permetta il calcolo del 
+//fattoriale di un intero positivo (si può utilizzare il metodo moltiplica
+//realizzato precedentemente)
+
+//in C il programma sarebbe:
+	
+//#include <stdio.h>
+
+//int fak (int n) {   // con n >=0
+                    
+//if (n==0) {
+//return 1;
+//} 
+//else {
+//return mul(n, fattoriale(n-1)); 
+//
+//}
+//}
+
+
+.constant
+    OBJREF 0x40
+    OUTPUT 0x30
+.end-constant
+
+.main
+    LDC_W OBJREF
+    BIPUSH 3
+    INVOKEVIRTUAL factorial
+    LDC_W OUTPUT
+    IADD
+    OUT
+    HALT
+.end-main
+
+
+.method multiply(i, j)
+    BIPUSH 0
+    ILOAD i
+    ISUB
+    //-i 
+    IFLT mul
+    BIPUSH 0
+    GOTO exit
+
+mul: LDC_W OBJREF
+     ILOAD i
+     BIPUSH 1
+     ISUB
+     ILOAD j
+     INVOKEVIRTUAL multiply
+     ILOAD j
+     IADD
+
+exit: IRETURN
+.end-method
+
+
+//#include <stdio.h>
+
+//int fak (int n) {   // con n >=0
+                    
+//if (n==0) {
+//return 1;
+//} 
+//else {
+//return mul(n, fattoriale(n-1)); 
+//
+//}
+//}
+
+.method factorial(n)
+    ILOAD n
+    IFEQ one
+    LDC_W OBJREF
+    ILOAD n
+    LDC_W OBJREF
+    ILOAD n
+    BIPUSH 1
+    ISUB
+    INVOKEVIRTUAL factorial
+    INVOKEVIRTUAL multiply
+    GOTO exit
+one: BIPUSH 1
+exit: IRETURN
+.end-method
+

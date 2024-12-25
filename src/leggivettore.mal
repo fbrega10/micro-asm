@@ -1,0 +1,21 @@
+.default goto fine
+.label inizio 0x0
+
+//il programma deve sommare i numeri di un vettore il cui contenuto è puntato da SP contenente n celle
+
+inizio N = OPC; if (N) goto settos; else goto continua
+
+continua Z = OPC; if (Z) goto quasifine; else goto count
+
+count MAR = SP; rd
+      OPC = OPC - 1;
+      SP = SP + 1;
+      N = MDR; if(N) goto continua; else goto inc
+
+inc TOS = TOS + 1; goto continua 
+
+settos TOS = 0; goto fine;
+quasifine goto fine;
+
+fine goto fine
+

@@ -1,0 +1,49 @@
+.constant 
+    OBJREF 0x40
+.end-constant
+
+.main
+.var
+    diff
+    x
+    y
+.end-var
+    BIPUSH 0x30
+    LDC_W OBJREF
+    BIPUSH 5
+    DUP
+    ISTORE x
+    BIPUSH 2
+    DUP
+    ISTORE y
+    INVOKEVIRTUAL diff_neg_yn
+    DUP
+    ISTORE diff
+    IADD
+    OUT
+stop:
+    HALT
+.end-main
+
+
+.method diff_neg_yn(p1, p2)
+.var 
+    diff
+.end-var
+    ILOAD p1
+    ILOAD p2
+    ISUB
+    DUP
+    ISTORE diff
+    IFLT lt
+    BIPUSH 0x4E
+    OUT
+    GOTO return
+lt:
+    BIPUSH 0x59
+    OUT
+return:
+    ILOAD diff
+    IRETURN
+
+.end-method

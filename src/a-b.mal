@@ -1,0 +1,14 @@
+.default goto fine
+.label inizio 0x0
+
+//i valori sono in TOS e OPC
+//operazione : TOS - OPC
+inizio H = OPC; goto sub
+
+sub H = TOS = TOS - H; goto double 
+
+double H = MDR = H + TOS;
+       MAR = SP = SP + 1; wr; goto fine
+
+fine goto fine
+

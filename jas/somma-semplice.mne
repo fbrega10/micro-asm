@@ -1,0 +1,22 @@
+.Om|65536
+kappa_1
+kappa_2
+kappa_3
+kappa_4
+end_constants
+Method main
+end_labels
+1
+11
+bipush
+byte
+istore
+i
+iload
+i
+ldc_w
+kappa_1
+kappa_2
+iadd
+halt
+end_methods

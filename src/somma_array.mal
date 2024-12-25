@@ -1,0 +1,21 @@
+.label inizio 0x0
+.default goto fine
+
+inizio OPC = 0;
+
+//leggo da SP tutti i valori, quando trovo 0 mi fermo
+//OPC diventa il mio accumulatore utilizzando H come appoggio
+
+somma  MAR = SP ; rd; 
+somma2 SP = SP + 1;
+somma3 H = MDR;
+somma4 OPC = OPC + H;
+//se il valore letto è zero, allora significa che abbiamo finito
+somma5 Z = MDR; if (Z) goto write; else goto somma
+       
+//scrivo in output su SP il valore atteso
+write   SP = SP - 1;
+write1  MDR = OPC; wr; goto fine
+
+fine goto fine;
+

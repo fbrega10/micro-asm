@@ -1,0 +1,7 @@
+to use IJVM you must : 
+
+1) load microprogram (IJVM) written in mal, which can be found under the mal folder (.mci1 extension)
+
+2) compile your IJVM .jas file, and then you must compile it as macroprogram (compiling to a .ijvm extension)
+
+3) execute your .ijvm file which was produced in this case, skipping a macro step at a time

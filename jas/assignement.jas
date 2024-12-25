@@ -1,0 +1,31 @@
+.constant
+    outval 0x30
+.end-constant
+.main
+.var 
+    x
+    y
+    k
+.end-var
+
+    BIPUSH 2
+    ISTORE x
+    BIPUSH 3
+    ISTORE y
+    BIPUSH 2
+    ISTORE k
+    
+    ILOAD x
+    ILOAD y
+    IADD
+    BIPUSH -1
+    IADD
+    ILOAD k
+    DUP
+    IADD
+    IADD
+    LDC_W outval
+    IADD
+    OUT
+
+.end-main

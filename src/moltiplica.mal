@@ -1,0 +1,12 @@
+.default goto fine
+.label inizio 0x0
+
+inizio N = TOS; if (N) goto fine1; else goto istr01
+istr01 N = OPC; if (N) goto fine2; else goto istr02
+istr02 H = OPC + H; goto istr03
+istr03 TOS = TOS - 1; if (Z) goto fine2; else goto istr02
+
+fine1 goto fine
+fine2 goto fine
+fine goto fine
+

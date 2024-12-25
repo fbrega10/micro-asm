@@ -1,0 +1,17 @@
+.default goto fine
+.label inizio 0x0
+
+//scrivo primo elemento letto da OPC
+inizio MDR = TOS = H = OPC;
+       MAR = SP = SP + 1; wr; goto push2 
+//pusho secondo operando che viene letto da CPP, aggiorno top of stack
+push2 MDR = TOS = CPP;
+//sommo i due elementi e mi porto al livello di LV, scrivo qui dentro
+       H = H + MDR;
+       MAR = SP = SP + 1; wr; 
+       SP = SP -1; 
+       SP = SP -1;
+       MDR = TOS =  H; wr; goto fine
+fine goto fine
+
+

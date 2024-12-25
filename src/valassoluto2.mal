@@ -1,0 +1,14 @@
+.label inizio 0x0
+.default goto fine
+
+//ho il valore direttamente in OPC
+
+inizio TOS = N = OPC; if (N) goto inverti; else goto settos 
+
+settos goto fine
+
+inverti H = OPC; goto inverti2
+inverti2 TOS = - H; goto fine
+
+fine goto fine
+

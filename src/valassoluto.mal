@@ -1,0 +1,18 @@
+//Scrivere un programma MAL che calcoli il valore assoluto 
+//del numero presente in memoria all’indirizzo
+//presente in LV e metta il risultato in TOS
+
+.label inizio 0x0
+.default goto fine
+
+inizio MAR = LV; rd; goto istr01
+istr01 goto istr02
+istr02 N = MDR; if (N) goto inverti; else goto settos
+
+settos TOS = MDR; goto fine
+
+inverti H = MDR; goto inverti2
+inverti2 TOS = - H; goto fine
+
+fine goto fine
+

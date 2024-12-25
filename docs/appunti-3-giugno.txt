@@ -1,0 +1,112 @@
+3 giugno
+
+
+funzione quadrato 
+
+int quadrato(int r){
+int risultato = 0;
+for (r; r > 0; r--){
+risultato = risultato + r;
+}
+}
+
+
+
+ijvm translation of the program
+
+
+.method quadrato(r)
+.var 
+    risultato
+    i
+.end-var.
+
+BIPUSH 0
+ISTORE risultato
+ILOAD r
+ISTORE i
+
+somma: ILOAD r
+       ILOAD risultato
+       IADD
+       ISTORE risultato
+       ILOAD i
+       IINC -1
+       DUP
+       ISTORE i 
+       IF_EQ fine
+       GOTO somma
+       
+fine ILOAD RISULTATO
+fine2 IRETURN
+.end-method
+
+.constant
+    OBJREF 0x40
+.main
+.var
+    res
+.end-var
+    LDC_W OBJREF
+    BIPUSH 4
+    INVOKEVIRTUAL quadrato
+    ISTORE res
+    HALT
+.end-main
+
+
+
+
+trascrizione in binario (codici operativi)
+
+byte addr   mnemonico        label     contenuto
+
+
+0x13       LDC_W            no         
+Ox0        byte 0
+Ox0        byte 0
+0x10       BIPUSH
+0x6        byte
+0xB6       INVOKEVIRTUAL
+
+//funzione quadrato vera e propria inizia qui:
+0x10       //i
+0x1        //r
+
+0x15       ILOAD                       0x10
+0x15       ILOAD                       0x1
+0xA7       IADD                     
+0x36       ISTORE                      0x10
+0x15       ILOAD                       0x1
+//decremento
+0x84       IINC                        0x1
+
+//dup
+0x59       DUP
+0x36       ISTORE                      0x10
+
+//if equal go to fine
+0x99       IFEQ                        FINE
+0xA7       GOTO                        SOMMA ADDR 
+
+
+
+//fine funzione
+
+
+0x0
+0x36       ISTORE
+
+0x10       BIPUSH
+
+
+
+0x36       ISTORE
+0x0        res 
+0x?        HALT
+
+
+
+
+
+

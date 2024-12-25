@@ -1,0 +1,26 @@
+.label inizio 0x0
+.default goto fine
+
+// (X AND NOT Y ) OR (NOT X AND Y)
+//Writing this expression in MAL, having
+//x and y in SP and SP + 1
+//put the value of the expression in SP + 2
+
+inizio MAR = SP; rd; goto fetch2
+
+fetch2 MAR = SP = SP + 1; rd; 
+//X is in TOS
+       TOS = MDR;
+//Y is in OPC
+       OPC = MDR; goto firstexp
+
+firstexp H = NOT OPC;
+         CPP = H = TOS AND H; goto secondexp
+
+secondexp H = NOT TOS;
+          H = OPC AND H;
+          SP = SP + 1;
+          MDR = CPP OR H; wr; goto fine
+
+fine goto fine
+

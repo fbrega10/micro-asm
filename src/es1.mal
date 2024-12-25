@@ -1,0 +1,19 @@
+//scrivere un programma in MAL che:
+//• Legga il dato memorizzato all’indirizzo di memoria presente
+//  nel registro H
+//• Sommi a questo il numero presente nel registro OPC
+//• Sottragga a questo il numero positivo presente in MBR
+//• Scriva il risultato all’indirizzo presente nel registro LV
+
+.label inizio 0x0
+.default goto fine
+
+inizio MAR = H; rd; goto istr01
+istr01 MAR = LV; goto istr02
+istr02 H = MDR; goto istr03
+istr03 OPC = OPC + H; goto istr04
+istr04 H = MBRU; goto istr05
+istr05 H = OPC - H; wr; goto fine
+
+fine goto fine
+

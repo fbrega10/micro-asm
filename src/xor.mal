@@ -1,0 +1,22 @@
+.label inizio 0x0
+.default goto fine
+
+// Calcolare x xor y, dove
+// - x è memorizzato nella cella puntata da SP
+// - TOS contiene y.
+// - risultato da memorizzare nella cella puntata da SP.
+// ricordiamo che x xor y = (not x and y) or (x and not y)
+// es. 0x00000003 xor 0x00000005 = 00000006
+
+inizio MAR = SP; rd; goto istr01
+istr01 MAR = SP = SP + 1; goto istr02
+istr02 H = NOT MDR; goto istr03
+// OPC = (not x and y)
+istr03 OPC = TOS AND H; goto istr04
+istr04 H = NOT TOS; goto istr05
+// H = (x and not y)
+istr05 H = MDR AND H; goto istr06
+istr06 MDR = H = OPC OR H; wr; goto fine
+
+fine goto fine;
+

@@ -1,0 +1,41 @@
+
+//scrivere un programma che permetta la ricorsione, come questo pgm in C
+//int div(int x, int y){ 
+//if (x-y>0) return div(x-y,y)+1; 
+//else return 0; 
+//} 
+
+.constant
+    OBJREF 0x40
+    OUTPUTOBJ 0x30
+.end-constant
+
+.main
+    LDC_W OBJREF
+    BIPUSH 4
+    BIPUSH 2
+    INVOKEVIRTUAL div
+    LDC_W OUTPUTOBJ
+    IADD
+    OUT
+    HALT
+.end-main
+
+.method div(x, y)
+    LDC_W OBJREF
+    ILOAD x
+    ILOAD y
+    ISUB
+    IFLT zero
+    ILOAD x
+    ILOAD y
+    ISUB
+    ILOAD y
+    INVOKEVIRTUAL div
+    BIPUSH 1
+    IADD
+    GOTO exit
+zero: POP 
+      BIPUSH 0
+exit: IRETURN
+.end-method

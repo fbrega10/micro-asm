@@ -1,0 +1,12 @@
+.default goto fine
+.label inizio 0x0
+
+//Supponendo di avere nel registro TOS un numero intero A rappresentato in complemento a due, scrivere un programma Mic1 che memorizzi nel registro OPC il valore -A. 
+//In questo esercizio non potete utilizzare operazioni della ALU che utilizzano l’operatore matematico meno (-). 
+//occorre invertire i bit e sommare 1
+
+
+inizio H = NOT TOS; goto istr01
+istr01 OPC = H = H + 1; goto fine
+fine goto fine
+

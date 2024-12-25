@@ -1,0 +1,13 @@
+.default goto fine
+.label inizio 0x0
+
+//quello che voglio fare è: 2(A - B)
+//in TOS e SP ho A e B
+inizio H = SP;
+       H = TOS - H; goto double
+
+double OPC = H;
+       OPC = H = OPC + H; goto fine
+
+fine goto fine
+

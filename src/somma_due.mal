@@ -1,0 +1,13 @@
+.default goto fine
+.label inizio 0x0
+
+//sommo due numeri che sono in sp e opc 
+
+inizio MAR = SP; rd
+       H = OPC;
+       SP = SP + 1;
+       OPC = TOS = MDR + H; wr
+       goto fine
+
+fine goto fine
+

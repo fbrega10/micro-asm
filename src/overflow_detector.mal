@@ -1,0 +1,22 @@
+.label inizio 0x0
+.default goto fine
+
+// Dati due numeri calcolare la somma e verificare se si verifica un overflow
+// - TOS contiene il primo addendo
+// - H contiene il secondo addendo
+// - H contiene il risultato della somma
+// - OPC vale 1 se si verifica un overflow, altrimenti vale 0
+
+inizio  N = TOS; if (N) goto primoneg; else goto primopos
+
+primoneg N = H; if (N) goto primoneg_secneg; else goto primoneg_secpos
+primopos N = H; if (N) goto primopos_secneg; else goto primopos_secpos
+primoneg_secpos goto sommaNoOverflow
+primopos_secneg goto sommaNoOverflow
+
+primoneg_secneg N = H = H + TOS; if (N) goto noOverflow; else goto overFlowN
+primopos_secpos N = H = H + TOS; 
+
+
+sommaNoOverflow H = TOS + H; goto noOverflow
+noOverflow OPC = 0; goto fine

@@ -1,0 +1,23 @@
+//this program finds the minimum of the two values
+.constant
+  X 5
+  Y 2
+.end-constant
+.main
+  .var
+    min
+  .end-var
+
+  LDC_W X
+  LDC_W Y
+  ISUB
+  IFLT negx
+  LDC_W Y
+  ISTORE min
+
+negx:
+  LDC_W X
+  ISTORE min
+  HALT
+.end-main
+

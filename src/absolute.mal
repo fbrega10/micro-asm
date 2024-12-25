@@ -1,0 +1,20 @@
+.label inizio 0x0
+.default goto fine
+
+//OPC contiene n
+
+
+inizio Z = OPC; if (Z) goto end; else goto istr01
+
+istr01 MAR = SP; rd; goto istr02
+istr02 SP = SP + 1; goto istr03
+istr03 N = MDR; if (N) goto nega; else goto istr04
+istr04 goto nega4 
+
+nega H = MDR; goto nega2
+nega2 MDR = -H; goto nega3
+nega3 MAR = SP - 1; wr
+nega4 OPC = OPC - 1; goto inizio 
+
+end SP = SP - 1; goto fine
+fine goto fine

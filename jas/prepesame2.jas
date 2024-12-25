@@ -1,0 +1,29 @@
+//Supponete che tra le variabili locali di un programma C ci siano due array di dieci numeri 
+//interi chiamati A e B. Si vuole copiare l'array B nell'array A. 
+//Supponiamo che gli array siano realizzati come parole consecutive nel Local Variable Frame e 
+//che il primo elemento di A sia distante 13 word da LV, mentre il primo elemento di B sia distante 23 da LV. 
+//Scrivere un segmento di codice IJVM che traduca l'operazione di copiare l'array B nell'array A. 
+
+.main
+   ILOAD 13 
+   ISTORE 23
+   ILOAD 14 
+   ISTORE 24
+   ILOAD 15 
+   ISTORE 25
+   ILOAD 16 
+   ISTORE 26
+   ILOAD 17 
+   ISTORE 27
+   ILOAD 18 
+   ISTORE 28
+   ILOAD 19 
+   ISTORE 29
+   ILOAD 20 
+   ISTORE 30
+   ILOAD 21 
+   ISTORE 31
+   ILOAD 22 
+   ISTORE 32
+.end-main
+

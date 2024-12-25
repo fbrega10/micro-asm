@@ -1,0 +1,15 @@
+// SEMPLICE PROGRAMMA DI PROVA PER SPERIMENTARE ALCUNE ISTRUZIONI IJVM
+.constant
+KAPPA  3
+.end-constant
+.main
+.var
+i
+.end-var
+	BIPUSH 10
+	ISTORE i
+	ILOAD i
+	LDC_W KAPPA
+	IADD
+	HALT
+.end-main

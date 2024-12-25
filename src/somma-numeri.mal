@@ -1,0 +1,16 @@
+.default goto fine
+.label inizio 0x0
+
+//ho in OPC i miei numeri, devo sommare da OPC tutti i numeri fino ad azzerare OPC
+
+inizio Z = OPC; if (Z) goto scrivi; else goto somma
+
+somma H = OPC;
+      TOS = TOS + H;
+      OPC = OPC - 1; goto inizio
+
+scrivi MAR = SP;
+       MDR = TOS; wr; goto fine
+
+fine goto fine
+

@@ -1,0 +1,12 @@
+.main
+.var 
+    x
+.end-var
+    NOT 10
+    DUP
+    ISTORE x
+    BIPUSH 0x30
+    IADD
+    OUT
+    HALT
+.end-main

@@ -1,0 +1,11 @@
+.label inizio 0x0
+.default goto fine
+
+//leggi da MDR
+inizio N = MDR; if (N) goto set1; else goto fine 
+
+set1  TOS = 1; 
+other goto fine;
+
+fine goto fine
+

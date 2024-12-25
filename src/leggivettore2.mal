@@ -1,0 +1,21 @@
+.default goto fine
+.label inizio 0x0
+
+//ho in OPC il numero di numeri
+
+inizio Z = OPC; if (Z) goto scrivizero; else goto somma
+
+somma Z = OPC; if(Z) goto scrivi; else goto sum
+
+sum MAR = SP; rd;
+    OPC = OPC - 1;
+    SP = SP + 1;
+    N = MDR; if (N) goto somma; else goto conta
+
+conta TOS = TOS + 1; goto conta2
+conta2 goto somma
+
+scrivizero TOS = 0; goto fine
+
+
+fine goto fine

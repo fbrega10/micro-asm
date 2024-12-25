@@ -1,0 +1,22 @@
+.label inizio 0x0
+.default goto fine
+
+//Doing a x b
+//where a is in OPC and  b is in TOS
+
+inizio MAR = SP; rd;
+       MAR = SP + 1; rd
+       OPC = MDR;
+       TOS = MDR; goto preop
+
+preop MAR = LV; goto verify 
+
+verify Z = TOS; if (Z) goto write; else goto sum 
+
+sum MDR = H = H + OPC;
+    TOS = TOS - 1; goto verify
+
+write wr; goto fine
+
+fine goto fine
+

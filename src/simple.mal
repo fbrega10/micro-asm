@@ -1,0 +1,15 @@
+.default goto fine
+.label inizio 0x0
+
+//eseguo semplice differenza tra registro OPC e H
+
+inizio MAR = H; rd; goto pausa
+pausa MAR = LV; goto sum
+
+sum H = MDR;
+    OPC = OPC + H;
+    H = MBRU;
+    MDR = OPC - H; wr; goto fine
+
+fine goto fine
+

@@ -1,0 +1,24 @@
+.default goto fine
+.label inizio 0x0
+
+//programma che deve prendere da due registri (cpp e lv)
+//e deve restituire la loro somma
+
+inizio MAR = CPP; rd; goto readlv
+
+//leggo i due operandi rispettivamente da CPP -> H, LV -> OPC
+
+readlv MAR = LV; rd;
+       CPP = H = MDR;
+       OPC = MDR; goto multiply
+
+//decremento OPC di 1 ad ogni ciclo
+multiply OPC = OPC - 1; if (N) goto exit; else goto sum
+
+//finalmente sommo
+sum H = CPP + H; goto multiply
+
+exit MDR = H;
+     MAR = SP + 1; wr; goto fine
+fine goto fine
+

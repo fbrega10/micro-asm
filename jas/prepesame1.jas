@@ -1,0 +1,49 @@
+//Scrivere il codice IJVM di un metodo che prenda in input due parametri formali
+ //k e j (numeri interi) e che restituisca k+4 se 2*(j+k) è maggiore di 15 e j-1 altrimenti.
+//Scrivere inoltre il segmento di codice che traduca la chiamata di tale metodo con parametri attuali 5 e 7.
+//(La traduzione del metodo, che verra' inserita nella Method Area, deve ovviamente contenere, 
+//nei primi 4 byte le informazioni relative al numero di argomenti di variabili locali del metodo).
+
+
+.constant
+//object reference
+    OBJREF 0x40
+//output reference ASCII CODE
+    OUTPUT 0x30
+.end-constant
+
+.main
+    LDC_W OBJREF
+    BIPUSH 5
+    BIPUSH 7
+    INVOKEVIRTUAL func
+    LDC_W OUTPUT
+    IADD
+    OUT
+    HALT
+.end-main
+
+
+.method func(k, j)
+//init
+    ILOAD k
+    ILOAD j
+    IADD
+    DUP
+    IADD
+    BIPUSH 15
+    ISUB
+    IFLT minor
+    ILOAD k
+    BIPUSH 4
+    IADD
+    GOTO exit
+minor:
+    ILOAD j
+    BIPUSH 1
+    ISUB
+exit: 
+    IRETURN
+//end
+.end-method
+

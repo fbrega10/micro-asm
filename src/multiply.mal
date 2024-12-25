@@ -1,0 +1,13 @@
+.default goto fine
+.label inizio 0x0
+
+//TOS e OPC sono da moltiplicare, assumiamo che il valore sia >= 0
+
+inizio H = 0; goto sum
+
+sum OPC = OPC -1; if (N) goto exit; else goto sum1
+sum1 H = H + TOS; goto sum
+
+exit goto fine
+fine goto fine
+

@@ -1,0 +1,25 @@
+.constant
+    OBJREF 0x40
+    outval 0x30
+.end-constant
+
+.main
+
+    LDC_W OBJREF
+    BIPUSH 4
+    BIPUSH 5
+    INVOKEVIRTUAL somma
+    HALT
+.end-main
+
+.method somma(x, y)
+    ILOAD x
+    ILOAD y
+    IADD 
+    LDC_W outval
+    IADD
+    OUT
+    BIPUSH 0
+    IRETURN
+.end-method
+

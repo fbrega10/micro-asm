@@ -1,0 +1,14 @@
+.default goto fine
+
+.label inizio 0x0
+
+inizio TOS=0
+
+iniziociclo MAR = SP; rd
+            SP = SP + 1;
+            H = MDR; if (Z) goto fine; else goto somma;
+
+somma       TOS = H + TOS; goto iniziociclo;
+
+fine goto fine
+

@@ -1,0 +1,58 @@
+
+blocco -> insieme di byte/ word contigui
+una cella si trova dentro una cella
+
+verifico se il blocco è in cache
+
+
+ tag, line e offset
+
+Address % NB = offset
+Address / NB = line
+
+line % nRighe = line
+line / nRighe = tag
+
+
+Numero dei blocchi mi dice quati blocchi di cache ho a disposizione
+
+
+esercizio 
+
+24 bit indicizzata al byte
+
+256 blocchi  da 128 byte
+
+
+offset = 24 % 7 = 7 bit
+line = 17 bit
+
+
+i blocchi sono 2 ^ 8 
+
+trova nei 4 casi
+
+cache a corrispondenza diretta = 
+tag = 9 bit, line = 8 bit
+
+cache pura : 
+tag = 17 bit, offset = 7 bit
+
+cache a quattro vie : 
+tag = 11 bit, line = 6 bit, offset = 7 bit
+
+cache ca otto vie : 
+tag = 10, line = 5, offset = 7 bit
+
+
+----------------------------------------------------------------------
+
+
+indirizzo al byte 24 bit
+blocco = 256 -> 2^8
+
+
+cache corrispondenza diretta
+line = 16 bit, offset = 8 bit
+
+

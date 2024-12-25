@@ -1,0 +1,32 @@
+.constant
+    outval 0x30
+.end-constant
+
+.main
+
+.var
+    x
+    y
+.end-var
+
+    BIPUSH 1
+    LDC_W outval
+    IADD
+    OUT
+    BIPUSH 1
+    LDC_W outval
+    IADD
+    OUT
+    BIPUSH 4
+    LDC_W outval
+    IADD
+    OUT
+    BIPUSH 4
+    LDC_W outval
+    IADD
+    OUT
+    BIPUSH 6
+    LDC_W outval
+    IADD
+    OUT
+.end-main

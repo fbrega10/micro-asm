@@ -1,0 +1,7 @@
+.default goto fine
+.label inizio 0x0
+inizio N = MDR; if(N) goto tos1; else goto tos0;
+tos1 TOS=1; goto fine
+tos0 TOS=0; goto fine
+fine goto fine
+

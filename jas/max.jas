@@ -1,0 +1,24 @@
+.constant
+  X 7
+  Y 10
+.end-constant
+
+.main
+.var 
+  max
+.end-var
+
+  LDC_W X
+  LDC_W Y
+  ISUB
+  IFLT then
+  LDC_W X
+  HALT
+
+then:
+  LDC_W Y
+  ISTORE max
+  HALT
+
+.end-main
+

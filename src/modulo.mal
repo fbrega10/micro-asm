@@ -1,0 +1,13 @@
+.label inizio 0x0
+.default goto fine
+
+inizio MAR = SP = SP + 1;
+       N = OPC; if (N) goto modulo; else goto write
+
+modulo H = OPC;
+       MDR = TOS = H = -H; wr; goto fine
+
+write MDR = TOS = H; wr; goto fine
+
+fine goto fine
+

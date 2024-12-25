@@ -1,0 +1,26 @@
+.label inizio 0x0
+.default goto fine
+
+
+//dato un numero binario su 32 bit, contare il numero di bit a 1
+
+
+inizio TOS = 0; goto conta0
+
+//se il numero è a zero, allora è finita (non c'è nulla da contare)
+conta0 Z = OPC; if (Z) goto fine; else goto conta1
+
+//controlla se il bit più significativo è 1, a quel punto aggiungo 1
+//altrimenti vado a sommare il valore di OPC a OPC 
+conta1 N = OPC; if (N) goto incrementa; else goto conta2
+
+conta2 H = OPC; goto conta3
+
+//somma in aggiunta
+conta3 OPC = H + OPC; goto conta0
+
+//incremento TOS
+incrementa TOS = TOS + 1; goto conta2
+
+fine goto fine
+
